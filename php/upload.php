@@ -1,15 +1,20 @@
 <?php
-if(isset($_POST['name'])){
+if(isset($_POST['password'])){
 
 
-$name = $_POST["name"];
+$password = $_POST["password"];
 
- $countfiles = count($_FILES['fileupload']['name']);
+if(strcmp($password, "Andreashofer56113") === 1){
+  $countfiles = count($_FILES['fileupload']['name']);
 
- for($i=0;$i<$countfiles;$i++){
-  $filename = $_FILES['fileupload']['name'][$i];
-  move_uploaded_file($_FILES['fileupload']['tmp_name'][$i],'tmp/'.$filename);
+  for($i=0;$i<$countfiles;$i++){
+    $filename = $_FILES['fileupload']['name'][$i];
+    move_uploaded_file($_FILES['fileupload']['tmp_name'][$i],'tmp/'.$filename);
+  }
+  echo("Erfolgreich");
+}else{
+  die("Falsches Passwort");
+}
 
- }
 }
 ?>
